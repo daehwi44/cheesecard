@@ -1,0 +1,87 @@
+body {
+  background: #e28024;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#cv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+.container {
+  width: 350px;
+  margin: 200px auto;
+}
+
+#stage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  /* 回転の奥行 */
+  perspective: 100px;
+  width: 100px;
+  height: 70px;
+  margin: 5px;
+}
+
+
+.card {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  transition: 0.8s;
+  /* カードを重ねるための処理 */
+  position: relative;
+  /* カードと同じ空間でカードの子要素を回転させる処理 
+  子要素を同じ3D空間に位置させる*/
+  transform-style: preserve-3d;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 70px;
+  border-radius: 8px;
+  /* カードを重ねるための処理 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 回転の最中に要素の裏面をみえないようにする */
+  backface-visibility: hidden;
+}
+
+.card-back {
+  background: #f1c40f;
+  color: #fff;
+}
+
+.card-front {
+  background: transparent;
+  color: #f1c40f;
+  /* 1を最初に反転しておいて回転したときに正しく見えるようにする処理 */
+  transform: rotateY(180deg);
+}
+
+.card.open {
+  transform: rotateY(180deg);
+  border-radius: 8px;
+  background-image: url(../img/ojisan.jpg);
+  background-size: cover;
+}
+
+#score {
+  font-size: 20px;
+  color: #fff;
+  text-align: right;
+  margin: 0 5px 10px 0;
+}
